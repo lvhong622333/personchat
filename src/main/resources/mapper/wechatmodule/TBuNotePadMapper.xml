@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvhong.mapper.wechatmodule.TBuNotePadMapper" >
+  <resultMap id="BaseResultMap" type="com.lvhong.pojo.wechatmodule.TBuNotePad" >
+    <result column="id" property="id" />
+    <result column="plan_date" property="planDate" />
+    <result column="actul_date" property="actulDate" />
+    <result column="note_desc" property="noteDesc"  />
+    <result column="isvalid" property="isvalid" />
+    <result column="create_date" property="createDate"  />
+    <result column="create_by" property="createBy"  />
+    <result column="uptime_date"  property="uptimeDate"/>
+    <result column="uptime_by" property="uptimeBy" />
+    <result column="bill_no" property="billNo" />
+    <result column="planDateStr" property="planDateStr" />
+    <result column="actulDateStr" property="actulDateStr" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, plan_date, actul_date, note_desc, isvalid, create_date, create_by, uptime_date, 
+    uptime_by, bill_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bu_note_pad
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bu_note_pad
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lvhong.pojo.wechatmodule.TBuNotePad" >
+    insert into t_bu_note_pad (id, plan_date, actul_date, 
+      note_desc, isvalid, create_date, 
+      create_by, uptime_date, uptime_by
+      )
+    values (#{id,jdbcType=BIGINT}, #{planDate}, #{actulDate}, 
+      #{noteDesc,jdbcType=VARCHAR}, #{isvalid,jdbcType=CHAR}, #{createDate}, 
+      #{createBy,jdbcType=BIGINT}, #{uptimeDate}, #{uptimeBy,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lvhong.pojo.wechatmodule.TBuNotePad" >
+    insert into t_bu_note_pad
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="planDate != null" >
+        plan_date,
+      </if>
+      <if test="actulDate != null" >
+        actul_date,
+      </if>
+      <if test="noteDesc != null and noteDesc != '' " >
+        note_desc,
+      </if>
+      <if test="isvalid != null" >
+        isvalid,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date,
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by,
+      </if>
+      <if test="billNo != null and billNo != ''">
+        bill_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="planDate != null" >
+        #{planDate},
+      </if>
+      <if test="actulDate != null" >
+        #{actulDate},
+      </if>
+      <if test="noteDesc != null and noteDesc != '' " >
+        #{noteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null" >
+        #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        #{uptimeDate},
+      </if>
+      <if test="uptimeBy != null" >
+        #{uptimeBy,jdbcType=BIGINT},
+      </if>
+      <if test="billNo != null and billNo != ''">
+        #{billNo}
+      </if>
+    </trim>
+  </insert>
+  <update id="uptimeByPrimaryKeySelective" parameterType="com.lvhong.pojo.wechatmodule.TBuNotePad" >
+    update t_bu_note_pad
+    <set >
+      <if test="planDate != null" >
+        plan_date = #{planDate},
+      </if>
+      <if test="actulDate != null" >
+        actul_date = #{actulDate},
+      </if>
+      <if test="noteDesc != null" >
+        note_desc = #{noteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null" >
+        isvalid = #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date = #{uptimeDate},
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by = #{uptimeBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="uptimeByPrimaryKey" parameterType="com.lvhong.pojo.wechatmodule.TBuNotePad" >
+    update t_bu_note_pad
+    set plan_date = #{planDate},
+      actul_date = #{actulDate},
+      note_desc = #{noteDesc,jdbcType=VARCHAR},
+      isvalid = #{isvalid,jdbcType=CHAR},
+      create_date = #{createDate},
+      create_by = #{createBy,jdbcType=BIGINT},
+      uptime_date = #{uptimeDate},
+      uptime_by = #{uptimeBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectBuNodePadPage" parameterType="com.lvhong.pojo.wechatmodule.TBuNotePad" resultMap="BaseResultMap">
+    select
+    id, plan_date, actul_date, note_desc, isvalid, create_date, create_by, uptime_date,
+    uptime_by, bill_no,
+    DATE_FORMAT(plan_date,'%Y-%m-%d') as planDateStr,
+    DATE_FORMAT(actul_date,'%Y-%m-%d') as actulDateStr
+    from t_bu_note_pad
+    <trim suffixOverrides="where">
+      <where>
+        <if test="planDate != null">
+          plan_date = #{planDate}
+        </if>
+      </where>
+    </trim>
+  </select>
+</mapper>

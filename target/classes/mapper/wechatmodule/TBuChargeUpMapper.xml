@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvhong.mapper.wechatmodule.TBuChargeUpMapper" >
+  <resultMap id="BaseResultMap" type="com.lvhong.pojo.wechatmodule.TBuChargeUp" >
+    <result column="id" property="id" />
+    <result column="bill_no" property="billNo" />
+    <result column="account_desc" property="accountDesc" />
+    <result column="account_type" property="accountType"  />
+    <result column="account_money" property="accountMoney" />
+    <result column="account_date" property="accountDate"/>
+    <result column="isvalid" property="isvalid" />
+    <result column="create_date" property="createDate"  />
+    <result column="create_by" property="createBy"  />
+    <result column="uptime_date"  property="uptimeDate"/>
+    <result column="uptime_by" property="uptimeBy" />
+    <result column="no"  property="no"  />
+    <result column="account_dateStr"  property="accountDateStr"  />
+    <result column="account_typeStr"  property="accountTypeStr"  />
+    <result column="stype_desc"  property="stypeDesc"  />
+    <result column="type_code"  property="typeCode"  />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bill_no, account_desc, account_type, account_money, account_date, isvalid, create_date, 
+    create_by, uptime_date, uptime_by,stype_desc,type_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bu_charge_up
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bu_charge_up
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lvhong.pojo.wechatmodule.TBuChargeUp" >
+    insert into t_bu_charge_up (id, bill_no, account_desc, 
+      account_type, account_money, account_date, 
+      isvalid, create_date, create_by, 
+      uptime_date, uptime_by)
+    values (#{id,jdbcType=BIGINT}, #{billNo,jdbcType=VARCHAR}, #{accountDesc,jdbcType=VARCHAR}, 
+      #{accountType,jdbcType=INTEGER}, #{accountMoney,jdbcType=DECIMAL}, #{accountDate,jdbcType=DATE}, 
+      #{isvalid,jdbcType=CHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, 
+      #{uptimeDate,jdbcType=TIMESTAMP}, #{uptimeBy,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lvhong.pojo.wechatmodule.TBuChargeUp" >
+    insert into t_bu_charge_up
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="billNo != null" >
+        bill_no,
+      </if>
+      <if test="accountDesc != null" >
+        account_desc,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="accountMoney != null" >
+        account_money,
+      </if>
+      <if test="accountDate != null" >
+        account_date,
+      </if>
+      <if test="isvalid != null" >
+        isvalid,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date,
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by,
+      </if>
+      <if test="typeCode != null" >
+        type_code,
+      </if>
+      <if test="stypeDesc != null" >
+        stype_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="billNo != null" >
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountDesc != null" >
+        #{accountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountMoney != null" >
+        #{accountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="accountDate != null" >
+        #{accountDate,jdbcType=DATE},
+      </if>
+      <if test="isvalid != null" >
+        #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        #{uptimeBy,jdbcType=BIGINT},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stypeDesc != null" >
+        #{stypeDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lvhong.pojo.wechatmodule.TBuChargeUp" >
+    update t_bu_charge_up
+    <trim  suffixOverrides="," >
+    <set >
+      <if test="billNo != null" >
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountDesc != null" >
+        account_desc = #{accountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountMoney != null" >
+        account_money = #{accountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="accountDate != null" >
+        account_date = #{accountDate,jdbcType=DATE},
+      </if>
+      <if test="isvalid != null" >
+        isvalid = #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by = #{uptimeBy,jdbcType=BIGINT},
+      </if>
+      <if test="typeCode != null" >
+        type_code = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stypeDesc != null" >
+        stype_desc = #{stypeDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    </trim>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lvhong.pojo.wechatmodule.TBuChargeUp" >
+    update t_bu_charge_up
+    set bill_no = #{billNo,jdbcType=VARCHAR},
+      account_desc = #{accountDesc,jdbcType=VARCHAR},
+      account_type = #{accountType,jdbcType=INTEGER},
+      account_money = #{accountMoney,jdbcType=DECIMAL},
+      account_date = #{accountDate,jdbcType=DATE},
+      isvalid = #{isvalid,jdbcType=CHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      uptime_by = #{uptimeBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectListByPage" parameterType="com.lvhong.pojo.wechatmodule.TBuChargeUp"  resultMap="BaseResultMap">
+      SELECT
+          id,
+          bill_no,
+          account_desc,
+          account_type,
+          case account_type when 0 then '支出'
+          when 1 then '收入'
+          else '' end as account_typeStr,
+          account_money,
+          account_date,
+          DATE_FORMAT(account_date,'%Y-%m-%d') as account_dateStr ,
+          ROW_NUMBER()  OVER(ORDER BY ID DESC ) AS NO,
+          type_code,
+          stype_desc
+      FROM
+          t_bu_charge_up
+      WHERE
+          isvalid = 1
+    <if test="billNo != null and billNo != '' " >
+     and bill_no = #{billNo,jdbcType=VARCHAR}
+    </if>
+    <if test="accountDesc != null and accountDesc != '' " >
+      and account_desc = #{accountDesc,jdbcType=VARCHAR}
+    </if>
+    <if test="accountType != null" >
+      and account_type = #{accountType,jdbcType=INTEGER}
+    </if>
+    <if test="accountMoney != null" >
+      and account_money = #{accountMoney,jdbcType=DECIMAL}
+    </if>
+    <if test="accountDate != null" >
+      and account_date = #{accountDate,jdbcType=DATE}
+    </if>
+    <if test="isvalid != null" >
+      and isvalid = #{isvalid,jdbcType=CHAR}
+    </if>
+    <if test="createDate != null" >
+      and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createBy != null" >
+      and create_by = #{createBy,jdbcType=BIGINT}
+    </if>
+    <if test="uptimeDate != null" >
+      and uptime_date = #{uptimeDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="uptimeBy != null" >
+      and uptime_by = #{uptimeBy,jdbcType=BIGINT}
+    </if>
+    <if test="typeCode != null and typeCode != '' " >
+      and type_code = #{typeCode,jdbcType=VARCHAR}
+    </if>
+    <if test="stypeDesc != null and typeCode != ''" >
+      and stype_desc = #{stypeDesc,jdbcType=VARCHAR}
+    </if>
+      <if test="accountDateStr != null and accountDateStr != ''" >
+        and   account_date  = str_to_date (#{accountDateStr,jdbcType=VARCHAR},'%Y-%m-%d')
+      </if>
+  </select>
+  <select id="queryBuChargeUpByBillNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+      SELECT
+          id,
+          bill_no,
+          account_desc,
+          account_type,
+          case account_type when 0 then '支出'
+          when 1 then '收入'
+          else '' end as account_typeStr,
+          account_money,
+          account_date,
+          DATE_FORMAT(account_date,'%Y-%m-%d') as account_dateStr ,
+          ROW_NUMBER()  OVER(ORDER BY ID DESC ) AS NO,
+          stype_desc,
+          type_code
+      FROM
+          t_bu_charge_up
+      WHERE
+          isvalid = 1
+      and bill_no = #{billNo,jdbcType=VARCHAR}
+  </select>
+
+  <resultMap id="queryBuChargeUpGroupByList_map" type="com.lvhong.pojo.wechatmodule.TbuChargeUpSum">
+     <result column="account_date" property="accountDate" />
+     <result column="incomeMoneys" property="incomeMoneys" />
+     <result column="sumExpands" property="sumExpands" />
+  </resultMap>
+  <select id="queryBuChargeUpGroupByList" parameterType="com.lvhong.pojo.wechatmodule.TbuChargeUpSum" resultMap="queryBuChargeUpGroupByList_map">
+        WITH a AS ( SELECT DISTINCT account_date FROM t_bu_charge_up
+          <if test="accountDate != null and accountDate != ''" >
+              where account_date  = str_to_date (#{accountDate},'%Y-%m-%d')
+          </if>
+        ORDER BY account_date DESC LIMIT 0, 10 ),
+        b AS (
+        SELECT
+            t.account_type,
+            a.account_date,
+            sum( t.account_money ) AS incomeMoneys
+        FROM
+            t_bu_charge_up t
+            RIGHT JOIN a ON t.account_date = a.account_date
+            AND t.account_type = 1
+        GROUP BY
+            a.account_date
+        )
+        SELECT
+            DATE_FORMAT(b.account_date,'%Y-%m-%d') as account_date,
+            b.incomeMoneys,
+            sum( t1.account_money ) AS sumExpands
+        FROM
+            t_bu_charge_up t1
+            RIGHT JOIN b ON t1.account_date = b.account_date
+            AND t1.account_type = 0
+        GROUP BY
+            b.account_date,
+            b.incomeMoneys
+  </select>
+</mapper>

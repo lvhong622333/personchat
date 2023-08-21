@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvhong.mapper.basicdata.TSysMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.lvhong.pojo.basicdata.TSysMenu" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="menu_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="menu_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isvalid" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_by" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="uptime_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="uptime_by" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, menu_name, menu_code, isvalid, create_date, create_by, uptime_date, uptime_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lvhong.pojo.basicdata.TSysMenu" >
+    insert into t_sys_menu (id, menu_name, menu_code, 
+      isvalid, create_date, create_by, 
+      uptime_date, uptime_by)
+    values (#{id,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, 
+      #{isvalid,jdbcType=CHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, 
+      #{uptimeDate,jdbcType=TIMESTAMP}, #{uptimeBy,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lvhong.pojo.basicdata.TSysMenu" >
+    insert into t_sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="menuCode != null" >
+        menu_code,
+      </if>
+      <if test="isvalid != null" >
+        isvalid,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date,
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null" >
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null" >
+        #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        #{uptimeBy,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lvhong.pojo.basicdata.TSysMenu" >
+    update t_sys_menu
+    <set >
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null" >
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null" >
+        isvalid = #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by = #{uptimeBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lvhong.pojo.basicdata.TSysMenu" >
+    update t_sys_menu
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_code = #{menuCode,jdbcType=VARCHAR},
+      isvalid = #{isvalid,jdbcType=CHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      uptime_by = #{uptimeBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

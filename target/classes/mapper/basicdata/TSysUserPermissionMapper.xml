@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvhong.mapper.basicdata.TSysUserPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.lvhong.pojo.basicdata.TSysUserPermission" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="auth_subject" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="bailee" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="auth_func_menu" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="read_write_permission" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="isvalid" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_by" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="uptime_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="uptime_by" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, auth_subject, bailee, auth_func_menu, read_write_permission, isvalid, create_date, 
+    create_by, uptime_date, uptime_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_user_permission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_user_permission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lvhong.pojo.basicdata.TSysUserPermission" >
+    insert into t_sys_user_permission (id, auth_subject, bailee, 
+      auth_func_menu, read_write_permission, isvalid, 
+      create_date, create_by, uptime_date, 
+      uptime_by)
+    values (#{id,jdbcType=BIGINT}, #{authSubject,jdbcType=BIGINT}, #{bailee,jdbcType=BIGINT}, 
+      #{authFuncMenu,jdbcType=BIGINT}, #{readWritePermission,jdbcType=CHAR}, #{isvalid,jdbcType=CHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{uptimeDate,jdbcType=TIMESTAMP}, 
+      #{uptimeBy,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lvhong.pojo.basicdata.TSysUserPermission" >
+    insert into t_sys_user_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="authSubject != null" >
+        auth_subject,
+      </if>
+      <if test="bailee != null" >
+        bailee,
+      </if>
+      <if test="authFuncMenu != null" >
+        auth_func_menu,
+      </if>
+      <if test="readWritePermission != null" >
+        read_write_permission,
+      </if>
+      <if test="isvalid != null" >
+        isvalid,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date,
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="authSubject != null" >
+        #{authSubject,jdbcType=BIGINT},
+      </if>
+      <if test="bailee != null" >
+        #{bailee,jdbcType=BIGINT},
+      </if>
+      <if test="authFuncMenu != null" >
+        #{authFuncMenu,jdbcType=BIGINT},
+      </if>
+      <if test="readWritePermission != null" >
+        #{readWritePermission,jdbcType=CHAR},
+      </if>
+      <if test="isvalid != null" >
+        #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        #{uptimeBy,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lvhong.pojo.basicdata.TSysUserPermission" >
+    update t_sys_user_permission
+    <set >
+      <if test="authSubject != null" >
+        auth_subject = #{authSubject,jdbcType=BIGINT},
+      </if>
+      <if test="bailee != null" >
+        bailee = #{bailee,jdbcType=BIGINT},
+      </if>
+      <if test="authFuncMenu != null" >
+        auth_func_menu = #{authFuncMenu,jdbcType=BIGINT},
+      </if>
+      <if test="readWritePermission != null" >
+        read_write_permission = #{readWritePermission,jdbcType=CHAR},
+      </if>
+      <if test="isvalid != null" >
+        isvalid = #{isvalid,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="uptimeDate != null" >
+        uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptimeBy != null" >
+        uptime_by = #{uptimeBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lvhong.pojo.basicdata.TSysUserPermission" >
+    update t_sys_user_permission
+    set auth_subject = #{authSubject,jdbcType=BIGINT},
+      bailee = #{bailee,jdbcType=BIGINT},
+      auth_func_menu = #{authFuncMenu,jdbcType=BIGINT},
+      read_write_permission = #{readWritePermission,jdbcType=CHAR},
+      isvalid = #{isvalid,jdbcType=CHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      uptime_date = #{uptimeDate,jdbcType=TIMESTAMP},
+      uptime_by = #{uptimeBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
