@@ -48,4 +48,47 @@ public class BuNotePadController {
         return rs;
     }
 
+    @RequestMapping("/buNotePadDetail")
+    @ResponseBody
+    public ResultValue<TBuNotePad> buNotePadDetail(String billno){
+        ResultValue<TBuNotePad> rs = new ResultValue<TBuNotePad>();
+        try{
+            TBuNotePad buNotePad = buNotePadService.buNotePadDetail(billno);
+            rs.setData(buNotePad);
+        }catch(Exception e){
+            rs.setCode(StateUtils.FAIL.code);
+            rs.setState(StateUtils.FAIL.name);
+            rs.setMessage(e.getMessage());
+        }
+        return rs;
+    }
+
+    @RequestMapping("/updateBuNotePad")
+    @ResponseBody
+    public ResultValue<String> updateBuNotePad(TBuNotePad tBuNotePad){
+        ResultValue<String> rs = new ResultValue<String>();
+        try{
+            buNotePadService.updateBuNotePad(tBuNotePad);
+        }catch(Exception e){
+            rs.setCode(StateUtils.FAIL.code);
+            rs.setState(StateUtils.FAIL.name);
+            rs.setMessage(e.getMessage());
+        }
+        return rs;
+    }
+
+    @RequestMapping("/deleteNotePadInfo")
+    @ResponseBody
+    public ResultValue<String> deleteNotePadInfo(TBuNotePad tBuNotePad){
+        ResultValue<String> rs = new ResultValue<String>();
+        try{
+            buNotePadService.deleteNotePadInfo(tBuNotePad);
+        }catch(Exception e){
+            rs.setCode(StateUtils.FAIL.code);
+            rs.setState(StateUtils.FAIL.name);
+            rs.setMessage(e.getMessage());
+        }
+        return rs;
+    }
+
 }

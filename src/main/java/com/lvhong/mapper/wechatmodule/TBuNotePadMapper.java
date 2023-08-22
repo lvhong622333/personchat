@@ -13,9 +13,11 @@ public interface TBuNotePadMapper {
 
     TBuNotePad selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TBuNotePad record);
+    int uptimeByPrimaryKeySelective(TBuNotePad record);
 
-    int updateByPrimaryKey(TBuNotePad record);
+    int uptimByPrimaryKey(TBuNotePad record);
 
     List<TBuNotePad> selectBuNodePadPage(TBuNotePad tBuNotePad);
+
+    TBuNotePad buNotePadDetail(String billno);
 }

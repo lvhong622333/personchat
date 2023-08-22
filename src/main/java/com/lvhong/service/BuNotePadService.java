@@ -8,4 +8,9 @@ public interface BuNotePadService {
 
     void buNotePadAdd(TBuNotePad tBuNotePad);
 
+    TBuNotePad buNotePadDetail(String billno);
+
+    void updateBuNotePad(TBuNotePad tBuNotePad);
+
+    void deleteNotePadInfo(TBuNotePad tBuNotePad);
 }

@@ -1,10 +1,12 @@
 package com.lvhong.pojo.wechatmodule;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lvhong.pojo.BasePOJO;
 
 import java.util.Date;
 
 public class TBuNotePad extends BasePOJO {
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Long id;
 
     private Date planDate;

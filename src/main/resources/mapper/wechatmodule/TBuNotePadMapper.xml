@@ -163,4 +163,13 @@
       </where>
     </trim>
   </select>
+  <select id="buNotePadDetail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    id, plan_date, actul_date, note_desc, isvalid, create_date, create_by, uptime_date,
+    uptime_by, bill_no,
+    DATE_FORMAT(plan_date,'%Y-%m-%d') as planDateStr,
+    DATE_FORMAT(actul_date,'%Y-%m-%d') as actulDateStr
+    from t_bu_note_pad
+    where bill_no = #{billno}
+  </select>
 </mapper>

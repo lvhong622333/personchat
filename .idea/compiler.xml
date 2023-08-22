@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="personchat" options="-parameters" />
+      <module name="personchat" options="-parameters -extdirs D:\private\personchat/src/main/webapp/WEB-INF/lib" />
     </option>
   </component>
 </project>

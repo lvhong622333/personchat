@@ -32,4 +32,19 @@ public class BuNotePadImpl implements BuNotePadService {
         tBuNotePad.setBillNo(CodeEditor.generatorCode(CodeEditor.CODE_PREFIX_JS));
         buNotePadMapper.insertSelective(tBuNotePad);
     }
+
+    @Override
+    public TBuNotePad buNotePadDetail(String billno) {
+        return buNotePadMapper.buNotePadDetail(billno);
+    }
+
+    @Override
+    public void updateBuNotePad(TBuNotePad tBuNotePad) {
+        buNotePadMapper.uptimeByPrimaryKeySelective(tBuNotePad);
+    }
+
+    @Override
+    public void deleteNotePadInfo(TBuNotePad tBuNotePad) {
+        buNotePadMapper.deleteByPrimaryKey(tBuNotePad.getId());
+    }
 }
